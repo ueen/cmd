@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>CMD</title>
+    <meta charset="utf-8">
+
+      <script type="text/javascript">
+
+
+      document.addEventListener('contextmenu', event => event.preventDefault());
+
+   window.addEventListener('load',function(){
+
+   window.addEventListener("focus", function(event)
+         {
+             window.setTimeout(function a() {document.getElementById('line').focus();}, 20);
+             });
+   document.getElementById("cd").innerHTML = "C&#58&#92ueen&#92Desktop&#62"
+           document.body.addEventListener('click', function(event)
+         {
+             window.setTimeout(function a() {document.getElementById('line').focus();}, 20);
+             });
+         document.getElementById("line").addEventListener('input', function (evt) {
+             document.getElementById("input").innerHTML += document.getElementById("line").value;
+        document.getElementById("line").value = null;
+         });
+             document.getElementById("line")
+    .addEventListener("keypress", function(event) {
+    if (document.getElementById("input").innerHTML.length > 0) {
+    if (event.keyCode == 13) {
+        event.preventDefault();
+
+            if (document.getElementById("cmm").clientHeight > 470) {
+              document.getElementById("cmm").innerHTML = document.getElementById("cmm").innerHTML.split('<br>').splice(1).join('<br>');
+            }
+            document.getElementById("cmm").innerHTML += "<br>" + document.getElementById("cd").innerHTML + document.getElementById("input").innerHTML;
+            var inpt = document.getElementById("input").innerHTML;
+            document.getElementById("input").innerHTML = null;
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "io.php?input="+inpt.toLowerCase());
+            xhr.onreadystatechange = function()
+            {
+                if(xhr.readyState == 4 && xhr.status == 200) {
+
+
+                          if (xhr.responseText.length > 2){
+                          if (document.getElementById("cmm").clientHeight > 470) {
+                            document.getElementById("cmm").innerHTML = document.getElementById("cmm").innerHTML.split('<br>').splice(1).join('<br>');
+                          }
+                    document.getElementById("cmm").innerHTML += "<br>" + xhr.responseText;
+                    }
+                }
+            }
+            xhr.send();
+
+
+
+         } else if (event.keyCode == 8) {
+           document.getElementById("input").innerHTML = document.getElementById("input").innerHTML.substring(0,document.getElementById("input").innerHTML.length-1);
+         }
+         }
+         });
+
+
+
+    });
+
+</script>
+
+
+    <style>
+
+.console {
+
+   font-size: large;
+  font-family:Courier;
+ color: #CCCCCC;
+  background: #000000;
+  border: 3px solid #CCCCCC;
+  padding: 10px;
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  user-select: none;          /* Likely future */
+}
+#cmd {
+  width: 700px;
+  height: 500px;
+  margin: 0 auto;
+}
+.row
+{
+    display: table;
+
+}
+.column
+{
+    display: table-cell;
+
+}
+
+
+    </style>
+</head>
+<body data-gr-c-s-loaded="true" bgcolor="#000000">
+<noscript>
+<div id="ovjs" autofocus style="background-color: rgba(1, 1, 1, 0.7); bottom: 0; left: 0; position: fixed; right: 0; top: 0; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;"><div style="font-size: 300%; font-family:Courier;color: #FF0000; font-weight: bold; position: absolute; top: 50%; text-align: center; width: 100%; ">PLEASE ENABLE JAVASCRIPT!</div></div>
+</noscript>
+<div id="outer">
+  <div class="console" id="cmd">
+       <div id="cmm">CMD Console <br> Copyright (c) 2018 ueen <br> . </div>
+       <div class="row">
+         <div class="column" id="cd">C:\ueen\Desktop&gt;</div>
+         <div class="column" id="input"></div>
+         <div class="column" id="cline"><input id="line" onblur="window.setTimeout(function b() {document.getElementById('line').focus();}, 20);" autofocus="" maxlength="1" autocomplete="off" size="10" style="border:none; background: transparent; outline: 0; color: #CCCCCC; font-size: large; font-family:Courier; " type="text"></div>
+       </div>
+  </div>
+
+</div>
+
+
+
+</body></html>
