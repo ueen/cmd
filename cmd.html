@@ -45,14 +45,31 @@
 
 
                           if (xhr.responseText.length > 2){
-                          if (document.getElementById("cmm").clientHeight > 470) {
-                            document.getElementById("cmm").innerHTML = document.getElementById("cmm").innerHTML.split('<br>').splice(1).join('<br>');
-                          }
+							  
+                          
                     document.getElementById("cmm").innerHTML += "<br>" + xhr.responseText;
+							  if (document.getElementById("cmm").clientHeight > 485) {
+				while (document.getElementById("cmm").clientHeight > 485) {
+                            document.getElementById("cmm").innerHTML = document.getElementById("cmm").innerHTML.split('<br>').splice(1).join('<br>');
+				}
+             }
+							  
                     }
                 }
             }
             xhr.send();
+		
+			if (document.getElementById("cmm").clientHeight > 485) {
+				while (document.getElementById("cmm").clientHeight > 485) {
+                            document.getElementById("cmm").innerHTML = document.getElementById("cmm").innerHTML.split('<br>').splice(1).join('<br>');
+				}
+             }
+		
+			if (document.getElementById("cmm").clientHeight > 485) {
+				while (document.getElementById("cmm").clientHeight > 485) {
+                            document.getElementById("cmm").innerHTML = document.getElementById("cmm").innerHTML.split('<br>').splice(1).join('<br>');
+				}
+             }
 
 
 
